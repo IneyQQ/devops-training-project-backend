@@ -23,7 +23,8 @@ phases:
     - echo "Build with $IMAGE_REPO_NAME, $REPO_URI, $IMAGE_TAG" 
     - docker push $REPO_URI:$IMAGE_TAG 
     - docker push $REPO_URI:latest
-    - printf '[{"name":"%s","imageUri":"%s"}]' $IMAGE_REPO_NAME $REPO_URI:$IMAGE_TAG > imagedefinitions.json 
-    - cat imagedefinitions.json 
+    - mkdir imagedefinitions
+    - printf '[{"name":"%s","imageUri":"%s"}]' $IMAGE_REPO_NAME $REPO_URI:$IMAGE_TAG > imagedefinitions/imagedefinitions.json 
+    - cat imagedefinitions/imagedefinitions.json 
 artifacts: 
   files: imagedefinitions.json
