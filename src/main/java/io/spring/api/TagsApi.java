@@ -23,7 +23,6 @@ public class TagsApi {
     public ResponseEntity getTags() {
         return ResponseEntity.ok(new HashMap<String, Object>() {{
             put("tags", tagsQueryService.allTags());
-	    put("YaVashaMama", "Trololo");
         }});
     }
 }
