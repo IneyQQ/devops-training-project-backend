@@ -42,16 +42,8 @@ tasks.withType(FindBugs) {
     }
 }
 
-if (!project.hasProperty("logback_version")) {
-    ext.logback_version = "1.2.3"
-    logger.error(ext.logback_version)
-}
-logger.error(ext.logback_version)
 dependencies {
-	compile("ch.qos.logback:logback-core:${logback_version}")
-	compile("ch.qos.logback:logback-classic:${logback_version}")
-	compile("ch.qos.logback:logback-access:${logback_version}")
-	compile("net.logstash.logback:logstash-logback-encoder:6.4")
+	compile("net.logstash.logback:logstash-logback-encoder:4.11")
 }
 dependencies {
 	compile('org.springframework.boot:spring-boot-starter-data-jpa')
