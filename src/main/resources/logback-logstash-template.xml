@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
     <include resource="org/springframework/boot/logging/logback/base.xml"/>
+<!--
     <logger name="guru.springframework.controllers" level="WARN" additivity="false">
         <appender-ref ref="CONSOLE"/>
         <appender-ref ref="FILE"/>
@@ -9,8 +10,21 @@
         <appender-ref ref="CONSOLE"/>
         <appender-ref ref="FILE"/>
     </logger>
-    <appender name="stash" class="net.logstash.logback.appender.LogstashTcpSocketAppender">
+    <appender name="FILE" class="ch.qos.logback.core.FileAppender">
+        <file>/opt/backend/testFile.log</file>
+        <append>true</append>
+        <immediateFlush>true</immediateFlush>
+        <encoder>
+            <pattern>%-4relative [%thread] %-5level %logger{35} - %msg%n</pattern>
+        </encoder>
+    </appender>
+-->
+    <appender name="LOGSTASH" class="net.logstash.logback.appender.LogstashTcpSocketAppender">
         <destination>${LOGSTASH_HOST_PORT}</destination>
         <encoder class="net.logstash.logback.encoder.LogstashEncoder"/>
     </appender>
+    <root level="INFO">
+        <appender-ref ref="FILE"/>
+        <appender-ref ref="LOGSTASH"/>
+    </root>
 </configuration>
